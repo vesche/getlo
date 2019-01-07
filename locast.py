@@ -57,7 +57,8 @@ class Client:
                 return path
 
     @staticmethod
-    def _somewhat_randomize_location((lat, lon)):
+    def _somewhat_randomize_location(ll):
+        lat, lon = ll
         def random_13digits():
             return ''.join([random.choice(digits) for _ in range(13)])
         return (lat + random_13digits(), lon + random_13digits())

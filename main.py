@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 
+import sys
 import click
 import locast
 
 from pick import pick
 
+if sys.version_info[0] >= 3:
+    unicode = str
+
 
 def get_desc(option):
     name = option['name'].split()[0]
     title = unicode.encode(option['listings'][0]['title'], errors="ignore")
-    return '{0:<8} {1}'.format(name, title)
+    return '{0:<8} {1}'.format(name, title.decode())
 
 
 @click.command()
