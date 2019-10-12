@@ -23,7 +23,10 @@ def get_desc(option):
 def main(username, password, vlc_location):
     client = locast.Client(username, password, vlc_location=vlc_location)
 
-    options = ['Boston', 'Chicago', 'Dallas', 'Denver', 'Houston', 'New York', 'Philadelphia']
+    options = [
+        'Baltimore', 'Boston', 'Chicago', 'Dallas', 'Denver', 'Houston', 'Los Angeles',
+        'New York', 'Philadelphia', 'Rapid City', 'Sioux Falls', 'Washington Dc'
+    ]
     location, _ = pick(options, "Locations:", indicator='->')
     client.get_dma(location)
 

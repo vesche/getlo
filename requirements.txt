@@ -1,5 +1,5 @@
-Click==7.0
-pendulum==1.2.5
-requests==2.21.0
-simplejson==3.16.0
-pick==0.6.4
+Click
+pendulum
+requests
+simplejson
+pick

@@ -15,13 +15,18 @@ from requests.exceptions import RequestException, HTTPError
 BASE_URL = "https://www.locast.org"
 ADMIN_URI = "/wp/wp-admin/admin-ajax.php"
 LOCATIONS = {
+    'Baltimore': ('39.2', '-76.6'),
     'Boston': ('42.3', '-71.1'),
     'Chicago': ('41.8', '-87.7'),
     'Dallas': ('32.7', '-96.6'),
     'Denver': ('39.7', '-105.0'),
     'Houston': ('29.7', '-95.3'),
+    'Los Angeles': ('34.0', '-118.3'),
     'New York': ('40.6', '-73.9'),
-    'Philadelphia': ('40.0', '-75.1')
+    'Philadelphia': ('40.0', '-75.1'),
+    'Rapid City': ('44.0', '-103.2'),
+    'Sioux Falls': ('43.5', '-96.7'),
+    'Washington Dc': ('38.9', '-77.0')
 }
 VLC_PATHS = {
     'Darwin': ['/Applications/VLC.app/Contents/MacOS/VLC'],
