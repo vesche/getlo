@@ -1,0 +1,125 @@
+LOCAST API REF
+
+ROOT URL: https://api.locastnet.org/
+
+STATUS CODES:
+    200: Success
+    404: Denied / General Error
+    400: Request Error
+
+---
+
+/api/user/login
+    - description: User login / authentication
+    - method: POST
+    - json request:
+        {
+            "username": "username",
+            "password": "password"
+        }
+    - json response:
+        {
+            "token": "<token>"
+        }
+
+/api/user/me
+    - description: User information / verification
+    - method: GET
+    - headers: "Authorization: Bearer <token>"
+    - json response (example):
+        {
+            "id": 11111,
+            "name": "<username>",
+            "created": 1545790476000,
+            "password": "<hash>",
+            "lastlogin": 1605301593193,
+            "realname": "",
+            "idrole": 1,
+            "didDonate": false,
+            "email": "<email>",
+            "lastDonation": "",
+            "donationExpire": "",
+            "lastDonationAmount": "",
+            "totalDonations": "",
+            "subscriptionProvider": "",
+            "lastDmaUsed": 512,
+            "emailConfirmed": true,
+            "parentIdUser": "",
+            "emailOptOut": false,
+            "lastPlayEvent": 1570892356624,
+            "signupSource": "",
+            "locale": "",
+            "facebook": ""
+        }
+
+/api/watch/dma/zip/<zipcode>
+    - description: Get geolocation via zip code
+    - method: GET
+    - json response (example using zip code 75001 [Dallas]):
+        {
+            "DMA": "623",
+            "name": "Dallas",
+            "small_url": "https://static.locastnet.org/cities/dallas.jpg",
+            "large_url": "https://static.locastnet.org/cities/background/dallas.jpg",
+            "active": true,
+            "announcements": [],
+            "latitude": 32.96005,
+            "longitude": -96.83852
+        }
+
+/api/watch/dma/ip
+    - description: Get geolocation via IP address
+    - method: GET
+    - headers: "client_ip: <ip_address>"
+    - json response (example using 66.97.145.100 [Dallas]):
+        {
+            "DMA": "623",
+            "name": "Dallas",
+            "small_url": "https://static.locastnet.org/cities/dallas.jpg",
+            "large_url": "https://static.locastnet.org/cities/background/dallas.jpg",
+            "active": true,
+            "announcements": [],
+            "latitude": 32.96005,
+            "longitude": -96.83852
+        }
+
+/api/watch/dma/<latitude>/<longitude>
+    - description: Get geolocation via latitude & longitude
+    - method: GET
+    - json response (example using 32.7831, -96.8067 [Dallas]):
+        {
+            "DMA": "623",
+            "name": "Dallas",
+            "small_url": "https://static.locastnet.org/cities/dallas.jpg",
+            "large_url": "https://static.locastnet.org/cities/background/dallas.jpg",
+            "active": true,
+            "announcements": [],
+            "latitude": 32.96005,
+            "longitude": -96.83852
+        }
+
+/api/watch/epg/<dma>
+    - description: Get station list using DMA
+    - method: GET
+    - headers: "Authorization: Bearer <token>"
+    - json response (example using DMA 623 [Dallas]):
+        - SEE ATTACHED: STATION_LIST_EXAMPLE.json
+
+/api/watch/station/<station_id>/<latitude>/<longitude>
+    - description: Get stream m3u8
+    - method: GET
+    - headers: "Authorization: Bearer <token>"
+    - json response (example using station 1812 [Dallas]):
+        {
+            "id": 1812,
+            "dma": 623,
+            "stationId": "50469",
+            "name": "KPXDDT3",
+            "callSign": "68.3 IONPLUS",
+            "logoUrl": "https://static.locastnet.org/logo/Dallas/IONPLUS.png",
+            "active": true,
+            "streamUrl": "https://acdn.locastnet.org/msg/stream_limit.m3u8",
+            "sequence": 1050,
+            "logo226Url": "https://static.locastnet.org/roku/SFO/KKPXDT3.png",
+            "tivoId": 69033295
+        }
